@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import { Component, useState } from 'react';
+import { useState } from 'react';
 import s from './Form.module.css';
 
-export default function Form({ getFormData }) {
+export default function Form({ addContact }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -21,7 +21,7 @@ export default function Form({ getFormData }) {
 
   const handleSubmite = event => {
     event.preventDefault();
-    getFormData({ name: name, number: number });
+    addContact({ name: name, number: number });
     setName('');
     setNumber('');
   };

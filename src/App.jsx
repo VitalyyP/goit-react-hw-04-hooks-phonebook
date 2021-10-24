@@ -6,8 +6,7 @@ import Filter from './components/Filter';
 import ContactList from './components/ContactList/ContactList';
 import Container from './components/Container';
 import { data } from './data/data';
-
-console.log(data);
+//import useLS from './hooks/useLS';
 
 function App() {
   const [contacts, setContacts] = useState(
@@ -19,7 +18,7 @@ function App() {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  const getFormData = data => {
+  const addContact = data => {
     if (contacts.some(contact => contact.name.toLowerCase() === data.name.toLowerCase())) {
       alert(`You have already had ${data.name} in your contacts`);
       return;
@@ -53,7 +52,7 @@ function App() {
   return (
     <Container>
       <h1>Phonebook</h1>
-      <Form getFormData={getFormData} />
+      <Form addContact={addContact} />
       <h2 className={s.contactsTitle}>Contacts</h2>
       <Filter value={filter} onChange={handleInputChange} />
       <ContactList
